@@ -1,0 +1,147 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    background-color: #EDF2C5;
+}
+
+header {
+    margin-top: 53px;
+    margin-bottom: 10px;
+}
+
+.container {
+    width: 1260px;
+    position: relative;
+    margin: auto;
+    padding: 0 160px;
+    box-sizing: border-box;
+}
+
+.icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.right {
+    padding-top: 17px;
+    float: right;
+}
+
+.icons-nav, .member, .right {
+    display: inline-block;
+    vertical-align: top;
+    height: 25px;
+    margin: 0;
+}
+
+.btn {
+    background: #EDF2C5;
+    color: #778A50;
+    border: #778A50 1px solid;
+    outline-style: none;
+    border-radius: 3px;
+    font: 12pt 'Arial Black';
+    margin-right: 10px;
+    padding: 1px 8px;
+    margin: 0 0 0 10px;
+}
+
+.icons-nav {
+    border-right: 1px #778A50 solid;
+}
+
+.title {
+    margin-bottom: 15px;
+    padding: 0 30px;
+    font: 16px "Arial Black";
+    line-height: 45px;
+}
+
+.nav{
+    margin-bottom: 20px;
+}
+
+.nav-top, .title {
+    color: #EDF2C5;
+    background-color: #778a50;
+    border-radius: 5px;
+}
+
+.nav-top .list > li {
+    display: inline-block;
+    margin: 0;
+}
+
+.nav-top .list > li > a{
+    color: #edf2c5;
+    text-decoration: none;
+    font: 16px 'Arial Black';
+    padding: 13px 30px;
+    display: inline-block;
+    margin: 0;
+}
+
+.cover{
+    margin-bottom: 30px;
+}
+
+article.content {
+    width: 445px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.content {
+    padding: 16px 15px;
+    font: 12px 'ArialMT Regular';
+    line-height: 1.33;
+    color: #7D7D7D;
+    background-color: #F7FBDA;
+    border-radius: 3px;
+}
+
+.horizon-line {
+    border-bottom: 1px #7D7D7D solid;
+    margin: 16px 0;
+}
+
+footer {
+    margin-top: 35px;
+}
+
+footer .container{
+    font: 12px 'ArialMT Regular';
+    color: #EDF2C5;
+    background-color: #778A50;
+    padding: 24px 0 25px 0;
+    text-align: center;
+}
+
+#website-title {
+    color: #778a50;
+    display: inline-block;
+    font: 44px/1 'Arial Black';
+    line-height: 44px;
+}
+
+#vegetables-img-content {
+    margin-right: 44px;
+}
+
+#vegetables-img-content figure {
+    display: inline-block;
+    float: left;
+    margin: 0;
+}
+
+#vegetables-img-content figure:not(:last-child) {
+    margin-right: 12px; 
+}
+
+img {
+   display: block;
+   vertical-align: top;
+}
