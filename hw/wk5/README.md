@@ -1,1 +1,2 @@
 <font color="#f03c15"> Don't open wk5_introduction.pdf with Google Chrome, it will BOOM!!!!!! </font>
+<font color="#f03c15"> If you could not open wk5_introduction.pdf , please open wk5_introduction_min.pdf instead.</font>
