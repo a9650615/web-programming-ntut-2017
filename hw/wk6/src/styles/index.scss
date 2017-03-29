@@ -1,0 +1,209 @@
+$dark_blue: #2e3742;
+$text_white: rgb(242, 242, 242);
+$footer_black: #2d2d2d;
+
+.float_right{
+    float: right;
+}
+
+.shadow {
+  box-shadow: 0px 0px 26.6px 8.4px rgba(0, 0, 0, 0.35);
+}
+
+.logo{
+    height: 100px;
+    padding-left: 30px;
+}
+
+.blur{
+    background: rgba(200,200,200,0.3);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    filter: blur(1px);
+    z-index: 1;
+}
+
+#header{
+    background-image: url('../image/header_background.png');
+    background-size: cover;
+    position: relative;
+
+    .container{
+        min-height: 500px;
+    }
+
+    .gradient{
+        width: 100%;
+        height: 120px;
+        position: absolute;
+        background: -webkit-linear-gradient(rgba(0,0,0,0.27) 0%, rgba(125,185,232,0) 100%);
+        background: -moz-linear-gradient(rgba(0,0,0,0.27) 0%, rgba(125,185,232,0) 100%);
+        background: -o-linear-gradient(rgba(0,0,0,0.27) 0%, rgba(125,185,232,0) 100%);
+        background: linear-gradient(rgba(0,0,0,0.27) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45000000', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+    }
+
+    .gradient_bottom {
+        width: 100%;
+        height: 120px;
+        position: absolute;
+        bottom: 0px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7db9e8+0,000000+100&0+0,0.27+100 */
+        background: -moz-linear-gradient(top, rgba(125,185,232,0) 0%, rgba(0,0,0,0.27) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,0.27) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,0.27) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#45000000',GradientType=0 ); /* IE6-9 */
+    }
+
+    nav{
+        display: block;
+        margin-top: 30px;
+
+        span{
+            margin-left: 10px;
+
+            .new {
+                color: red;
+                position: absolute;
+                transform: translateX(-20px) translateY(10px) rotate(-45deg);
+            }
+            a{
+                color: $text_white;
+                text-decoration: none;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .action_title{
+        padding: 60px 30px;
+    }
+}
+
+#block_sect{
+    @extend .shadow;
+    background: $dark_blue;
+    padding: 50px 0;
+
+    .horizen_line{
+        display: inline-block;
+        line-height: calc(2rem - 2px);
+        height: 2px;
+        background: $text_white;
+        width: calc(60% / 2 - 40px );
+        margin: 0 9.5%;
+    }
+
+    .text{
+        color: $text_white;
+        font-family: "Apple LiGothic";
+        line-height: 1.2;
+        font-size: 2rem;
+    }
+}
+
+#sect_selector{
+    @extend .container;
+    text-align: center;
+    border-bottom: 1px solid $text_white;
+    
+    .container{
+        padding-top: 10px;
+    }
+
+    span{
+        padding: 10px 30px 20px 30px;
+        box-sizing: border-box;
+        display: inline-block;
+        z-index: 10;
+        position: relative;
+    }
+
+    span.selected {
+        border-bottom: 2px solid $text_white;
+    }
+}
+
+#block_detail{
+    background-image: url('../image/down_background.png');
+    background-size: cover;
+
+    .bgwb{
+        background: rgba(255,255,255,0.1);
+    }
+
+    
+    #sect_img{
+        padding-top: 30px;
+        z-index: 10;
+        position: relative;
+        .revealing_button{
+            border: 3px solid $text_white !important;
+            width: calc(100% - 50px);
+            display: block;
+            margin: 0 auto 30px auto;
+        }
+        .sect_info{
+            p{
+                margin-bottom: 10px;
+            }
+            .tab {
+                padding-left: 10%;
+                margin-bottom: 80px;
+            }
+
+            .religion_button{
+                margin-top: 10px;
+                border: none;
+                background: rgba(255,255,255,0.3);
+                box-shadow: 0px 0px 10px .1px #222;
+                border-radius: 0;
+                position: absolute;
+                right: 30px;
+            }
+        }
+    } 
+}
+
+footer{
+    line-height: 10rem;
+    .container{
+        background: $footer_black;
+    }
+    input[type=text] {
+        background: none;
+        border: none;
+        border-radius: 0;
+        border-bottom: 3px solid #43959e;
+    }
+
+    button{
+        background: #43959e;
+        box-shadow: 0px 0px 20px .1px #333;
+        border: none;
+        border-radius: 1px;
+        margin-left: 10px;
+    }
+}
+
+.container{
+    color: $text_white;
+    position: relative;
+}
+
+button{
+    margin: auto;
+    color: $text_white !important;
+}
+
+figure{
+    margin: 0 !important;
+    display: block;
+    img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
