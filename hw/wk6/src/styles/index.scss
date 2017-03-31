@@ -16,8 +16,8 @@ $footer_black: #2d2d2d;
 	}
 }
 
-@include fontFace("W7", "/font/fontW7");
-@include fontFace("default", "/font/Sharp(CloudHeiPingGBK) Bold Figure Chinese Fontt-Traditional Chinese Fonts");
+@include fontFace("W7", "https://github.com/a9650615/web-programming-ntut-2017/blob/master/hw/wk6/dist/font/fontW7.TTF?raw=true");
+@include fontFace("default", "https://github.com/a9650615/web-programming-ntut-2017/blob/master/hw/wk6/dist/font/Sharp(CloudHeiPingGBK)%20Bold%20Figure%20Chinese%20Fontt-Traditional%20Chinese%20Fonts.TTF?raw=true");
 
 @keyframes show {
     from {opacity: 0; transform: translateX(-20px);}
