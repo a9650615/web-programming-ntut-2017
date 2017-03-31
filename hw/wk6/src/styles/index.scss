@@ -2,8 +2,39 @@ $dark_blue: #2e3742;
 $text_white: rgb(242, 242, 242);
 $footer_black: #2d2d2d;
 
+@mixin fontFace($family,$src,$style: normal,$weight: normal) {
+	@font-face {
+		font-family: $family;
+		src: url('#{$src}.eot'); // IE9 compat
+		src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+			// url('#{$src}.woff') format('woff'), // standards
+			url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+			url('#{$src}.svg##{$family}') format('svg'); // legacy iOS
+
+		font-style: $style;
+		font-weight: $weight;
+	}
+}
+
+@include fontFace("W7", "/font/fontW7");
+@include fontFace("default", "/font/Sharp(CloudHeiPingGBK) Bold Figure Chinese Fontt-Traditional Chinese Fonts");
+
+@keyframes show {
+    from {opacity: 0; transform: translateX(-20px);}
+    to {opacity: 1; transform: translateX(0px);}
+}
+
+.show {
+    animation: show 2s ease;
+    opacity: 1 !important;
+}
+
+body {
+    font-family: 'default' !important;
+}
+
 .float_right{
-    float: right;
+    float: right !important;
 }
 
 .shadow {
@@ -24,6 +55,44 @@ $footer_black: #2d2d2d;
     left: 0;
     filter: blur(1px);
     z-index: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.socialBlock{
+    float: right;
+    &.top{
+        margin-top: 50px;
+        position: relative;
+        z-index: 5;
+    }
+
+    &.footer{
+        display: inline-block;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    .fb{
+        width: 30px;
+    }
+
+    .twitter {
+        width: 32px;
+    }
+    figure{
+        display: inline-block;
+        margin-left: 20px !important;
+        position: relative;
+    }
+    figure img{
+        box-shadow: 0px 0px 10px .05px #222;
+        display: inline-block;
+        background: #fff;
+        border-radius: 4px;
+    }
 }
 
 #header{
@@ -56,6 +125,7 @@ $footer_black: #2d2d2d;
         background: -webkit-linear-gradient(top, rgba(125,185,232,0) 0%,rgba(0,0,0,0.27) 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom, rgba(125,185,232,0) 0%,rgba(0,0,0,0.27) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#45000000',GradientType=0 ); /* IE6-9 */
+        z-index: 0;
     }
 
     nav{
@@ -79,7 +149,12 @@ $footer_black: #2d2d2d;
     }
 
     .action_title{
+        text-align: center;
         padding: 60px 30px;
+        font-family: "W7";
+        h1 {
+            font-size: 6rem;
+        }
     }
 }
 
@@ -108,10 +183,11 @@ $footer_black: #2d2d2d;
 #sect_selector{
     @extend .container;
     text-align: center;
-    border-bottom: 1px solid $text_white;
+    
     
     .container{
         padding-top: 10px;
+        border-bottom: 1px solid $text_white;
     }
 
     span{
@@ -132,7 +208,10 @@ $footer_black: #2d2d2d;
     background-size: cover;
 
     .bgwb{
-        background: rgba(255,255,255,0.1);
+        background: rgba(150,150,150,0.1);
+        span {
+            cursor: pointer;
+        }
     }
 
     
@@ -145,6 +224,11 @@ $footer_black: #2d2d2d;
             width: calc(100% - 50px);
             display: block;
             margin: 0 auto 30px auto;
+            transition: background .3s ease;
+        }
+        .revealing_button:hover{
+            background: $text_white;
+            color: #000 !important;
         }
         .sect_info{
             p{
@@ -153,9 +237,12 @@ $footer_black: #2d2d2d;
             .tab {
                 padding-left: 10%;
                 margin-bottom: 80px;
+                p{
+                    opacity: 0;
+                }
             }
 
-            .religion_button{
+            .religion_button, .religion_button:hover{
                 margin-top: 10px;
                 border: none;
                 background: rgba(255,255,255,0.3);
@@ -163,6 +250,11 @@ $footer_black: #2d2d2d;
                 border-radius: 0;
                 position: absolute;
                 right: 30px;
+                padding: 5px 20px;
+                color: $text_white;
+                text-decoration: none;
+                cursor: pointer;
+                height: auto;
             }
         }
     } 
@@ -177,6 +269,12 @@ footer{
         background: none;
         border: none;
         border-radius: 0;
+        border-bottom: 3px solid #43959e;
+    }
+
+    input[type=text]:focus {
+        outline: none;
+        border: none;
         border-bottom: 3px solid #43959e;
     }
 
