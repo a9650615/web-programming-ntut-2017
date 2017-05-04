@@ -1,0 +1,12 @@
+.main-box {
+  width: 70%;
+  max-width: 1024px;
+  min-width: 200px;
+  margin: auto;
+  margin-top: 50px;
+  height: 50vh;
+}
+
+.main-chat-box {
+  padding: 10px;
+}
