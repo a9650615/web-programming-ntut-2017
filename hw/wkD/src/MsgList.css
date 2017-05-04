@@ -10,3 +10,21 @@
 .main-chat-box {
   padding: 10px;
 }
+
+.right-chat {
+  display: block;
+  width: 50%;
+  margin-left: 50%;
+  text-align: right; 
+}
+
+.left-chat {
+  display: block;
+  width: 50%;
+  text-align: left; 
+}
+
+.show-time {
+  color: #8c8c8c;
+  font-size: 15px;
+}

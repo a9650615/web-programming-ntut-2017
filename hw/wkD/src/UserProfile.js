@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as firebase from 'firebase'
 import 'firebase/auth'
+import Dialog from 'material-ui/Dialog'
 
 export default class UserProfile extends Component {
   componentWillMount() {
@@ -27,9 +28,16 @@ export default class UserProfile extends Component {
 
   render() {
     return (
-      <div>
+      <Dialog
+        modal={true}
+        open={this.props.show}
+        contentStyle={{
+          width: '80vw',
+          maxWidth: 500
+        }}
+        >
 
-      </div>
+      </Dialog>
     )
   }
 }

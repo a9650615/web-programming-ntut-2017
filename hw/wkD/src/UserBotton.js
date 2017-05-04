@@ -48,7 +48,7 @@ export default class UserButton extends Component {
         {
           this.state.user && 
             <div>
-              <FlatButton className="button" label="更改個人資訊" />
+              <FlatButton className="button" label="更改個人資訊" onTouchTap={this.props.profile} />
               <FlatButton className="button" label="登出" onTouchTap={this._logout.bind(this)} />
             </div>
         }

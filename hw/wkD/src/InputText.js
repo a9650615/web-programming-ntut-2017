@@ -25,42 +25,47 @@ export default class InputText extends Component {
 	}
 
 	onSubmit(e) {
-		if (e.keyCode === 13) {
-			let db = firebase.database()
-			const newPostKey = db.ref().child('data').push().key;
-			let data = {}
-			// console.log(firebase.auth().currentUser)
-			data[`/data/${newPostKey}`] = {
-				msg: this.state.msg,
-				user: firebase.auth().currentUser?firebase.auth().currentUser.uid:null,
-				time: new Date().getTime()
-			}
-
-			// db.ref('data').limitToLast(1).on('value', function(snap) {
-			// 	console.log(snap.val());
-			// })
-
-			db.ref().update(data).then((data) => {
-				this.setState({
-					sendType: 1,
-					resData: '發送成功',
-					msg: ''
-				})
-			})
-			.catch((e) => {
-				this.setState({
-					sendType: 2,
-					resData: e
-				})
-			})
-			// return firebase.database().ref().update(data);
+		let db = firebase.database()
+		const newPostKey = db.ref().child('data').push().key;
+		let data = {}
+		// console.log(firebase.auth().currentUser)
+		data[`/data/${newPostKey}`] = {
+			msg: this.state.msg,
+			user: firebase.auth().currentUser?firebase.auth().currentUser.uid:null,
+			time: new Date().getTime()
 		}
+
+		// db.ref('data').limitToLast(1).on('value', function(snap) {
+		// 	console.log(snap.val());
+		// })
+
+		db.ref().update(data).then((data) => {
+			this.setState({
+				sendType: 1,
+				resData: '發送成功',
+				msg: ''
+			})
+		})
+		.catch((e) => {
+			this.setState({
+				sendType: 2,
+				resData: '發送失敗：'+e
+			})
+		})
+		// return firebase.database().ref().update(data);
 	}
 
 	onChange(e) {
 		this.setState({
-			msg: e.target.value
+			msg: e.target.value,
+			sendType: 0
 		})
+	}
+
+	checkIsEnter(e) {
+		if (e.keyCode === 13) {
+			this.onSubmit()
+		}
 	}
 
 	render() {
@@ -70,13 +75,14 @@ export default class InputText extends Component {
 					ref="textInput"
 					hintText="請輸入訊息"
 					value={this.state.msg}
-					onKeyDown={this.onSubmit.bind(this)}
+					onKeyDown={this.checkIsEnter.bind(this)}
 					onChange={this.onChange.bind(this)}
 					/>
 				<RaisedButton
 				 label="送出"
 				 primary
 				 style={{marginLeft: 10}}
+				 onTouchTap={this.onSubmit.bind(this)}
 				 />
 				 <Snackbar 
 				 	open={this.state.sendType !== 0}

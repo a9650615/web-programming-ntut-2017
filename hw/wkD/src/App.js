@@ -24,6 +24,10 @@ class App extends Component {
     this.setState({open: 0})
   }
 
+  showProfile() {
+    this.setState({open: 2})
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -32,10 +36,13 @@ class App extends Component {
             show={this.state.open === 1} 
             close={this.closeDialog.bind(this)}
             />
-          <UserProfile />
+          <UserProfile 
+            show={this.state.open === 2} 
+            />
           <div className="App-header">
             <UserBottom 
-              login={this.showLogin.bind(this)} 
+              login={this.showLogin.bind(this)}
+              profile={this.showProfile.bind(this)}
               />
           </div>
           <MsgList />
