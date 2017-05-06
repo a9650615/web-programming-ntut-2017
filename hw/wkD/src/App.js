@@ -38,6 +38,7 @@ class App extends Component {
             />
           <UserProfile 
             show={this.state.open === 2} 
+            close={this.closeDialog.bind(this)}
             />
           <div className="App-header">
             <UserBottom 

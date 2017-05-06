@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app'
 import 'firebase/database'
 import 'firebase/auth'
 import Paper from 'material-ui/Paper'
+import Avatar from 'material-ui/Avatar'
 import './MsgList.css'
 
 export default class MsgList extends Component {
@@ -10,16 +11,18 @@ export default class MsgList extends Component {
     super(props)
     
     this.state = {
-      msgs: []
+      msgs: [],
+      users: {}
     }
   }
   
   componentWillMount() {
     let db = firebase.database()
     db.ref('data').limitToLast(10).once('value').then((snapshot) => {
-      this.setState({
-        msgs: snapshot.val()
-      });
+      // this.setState({
+      //   msgs: snapshot.val()
+      // });
+      this.getAccountInfo(snapshot.val())
     })
 
     db.ref('data').on('child_added', (data) => {
@@ -28,11 +31,30 @@ export default class MsgList extends Component {
       this.setState({
         msgs: Object.assign({}, this.state.msgs, tmpData)
       })
+      this.getAccountInfo(data.val())
     })
+  }
+
+  getAccountInfo(data) {
+    let msgs = data
+    let users = this.state.users
+
+    for (let key in msgs) {
+      if (users[msgs[key].user]) {
+        msgs[key].user = users[msgs[key]];
+      } else {
+        firebase.database().ref('users/'+msgs[key].user).once('value').then((data) => {
+          users[msgs[key].user] = data.val()
+          // msgs[key].user = data.val()
+          this.setState({users: users})
+        })
+      }
+    }
   }
 
   render() {
     let user = firebase.auth().currentUser
+    let users = this.state.users
     let msgs = this.state.msgs
     let msgsArr = Object.keys(msgs)
     let tmpTime
@@ -51,6 +73,18 @@ export default class MsgList extends Component {
                   <div 
                     className={`${(user && user.uid === this.state.msgs[key].user)? 'right-chat': 'left-chat'} main-chat-element`}
                     >
+                    <div className={`${(user && user.uid === this.state.msgs[key].user)? 'right-avatar': 'left-avatar'} avatar`}>
+                      {
+                        (users[msgs[key].user] && !users[msgs[key].user].photo) &&
+                        <Avatar size={30}>
+                          <span>{(users[msgs[key].user])?users[msgs[key].user].name.substring(0, 1).toUpperCase():'?'}</span>
+                        </Avatar>
+                      }
+                      {
+                        (users[msgs[key].user] && users[msgs[key].user].photo) &&
+                        <Avatar size={30} src={users[msgs[key].user].photo} />
+                      }
+                    </div>
                       {msgs[key].msg}
                   </div> 
                 </div>

@@ -18,10 +18,10 @@ export default class InputText extends Component {
 	}
 	
 	componentWillMount() {
-		firebase.database().ref('/data').limitToLast(10).once('value').then((snapshot) => {
-			var data = snapshot.val();
-			console.log(data)
-		});	
+		// firebase.database().ref('/data').limitToLast(10).once('value').then((snapshot) => {
+		// 	var data = snapshot.val();
+		// 	// console.log(data)
+		// });	
 	}
 
 	onSubmit(e) {

@@ -48,6 +48,14 @@ export default class UserBlock extends Component {
         this.setState({
           status: 1 //註冊成功
         })
+        firebase.database().ref('users/'+data.uid).update({
+          uid: data.uid,
+          name: data.email,
+          age: null,
+          occupation: null,
+          summary: null,
+          photo: null
+        })
         t.props.close();
       }).catch(function(error) {
         // Handle Errors here.

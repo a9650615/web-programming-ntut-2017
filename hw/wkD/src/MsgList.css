@@ -5,26 +5,46 @@
   margin: auto;
   margin-top: 50px;
   height: 50vh;
+  overflow: auto;
 }
 
 .main-chat-box {
   padding: 10px;
 }
 
+.main-chat-element {
+  position: relative;
+  padding: 10px 0;
+}
+
 .right-chat {
   display: block;
   width: 50%;
-  margin-left: 50%;
+  margin-left: calc(50% - 30px);
+  padding-right: 35px;
   text-align: right; 
 }
 
 .left-chat {
   display: block;
   width: 50%;
+  padding-left: 35px;
   text-align: left; 
 }
 
 .show-time {
   color: #8c8c8c;
   font-size: 15px;
+}
+
+.right-avatar{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.left-avatar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
