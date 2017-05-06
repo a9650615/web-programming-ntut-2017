@@ -18,11 +18,13 @@ export default class MsgList extends Component {
   
   componentWillMount() {
     let db = firebase.database()
-    db.ref('data').limitToLast(10).once('value').then((snapshot) => {
+    db.ref('data').limitToLast(20).once('value').then((snapshot) => {
       // this.setState({
       //   msgs: snapshot.val()
       // });
       this.getAccountInfo(snapshot.val())
+      // const scrollHeight = this.refs.chatBox.scrollHeight;
+      // this.refs.chatBox.scrollTop = scrollHeight;
     })
 
     db.ref('data').on('child_added', (data) => {
@@ -60,7 +62,7 @@ export default class MsgList extends Component {
     let tmpTime
     return (
       <Paper className="main-box">
-        <div className="main-chat-box">
+        <div className="main-chat-box" ref="chatBox">
           {
             msgsArr.map((key, i) => {
               tmpTime = new Date(msgs[key].time)
@@ -74,9 +76,10 @@ export default class MsgList extends Component {
                     className={`${(user && user.uid === this.state.msgs[key].user)? 'right-chat': 'left-chat'} main-chat-element`}
                     >
                     <div className={`${(user && user.uid === this.state.msgs[key].user)? 'right-avatar': 'left-avatar'} avatar`}>
+                      <span className="user-name">{(users[msgs[key].user])?users[msgs[key].user].name: ''}</span>
                       {
                         (users[msgs[key].user] && !users[msgs[key].user].photo) &&
-                        <Avatar size={30}>
+                        <Avatar size={50}>
                           <span>{(users[msgs[key].user])?users[msgs[key].user].name.substring(0, 1).toUpperCase():'?'}</span>
                         </Avatar>
                       }
@@ -85,7 +88,7 @@ export default class MsgList extends Component {
                         <Avatar size={30} src={users[msgs[key].user].photo} />
                       }
                     </div>
-                      {msgs[key].msg}
+                    <div className="chat-text">{msgs[key].msg}</div>
                   </div> 
                 </div>
                 )

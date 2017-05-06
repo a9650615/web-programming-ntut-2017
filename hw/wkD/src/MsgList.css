@@ -10,11 +10,13 @@
 
 .main-chat-box {
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .main-chat-element {
   position: relative;
-  padding: 10px 0;
+  padding: 20px 0 10px 0;
 }
 
 .right-chat {
@@ -47,4 +49,26 @@
   position: absolute;
   left: 0px;
   top: 0px;
+}
+
+.user-name{
+  display: block;
+  min-width: 100px;
+  position: absolute;
+  top: 0px;
+  left: 35px;
+  color: #8c8c8c;
+}
+
+.right-avatar .user-name {
+  position: absolute;
+  top: 0px;
+  left: auto;
+  right: 35px;
+}
+
+.chat-text {
+  background: #f1f0f0;
+  border-radius: 10px;
+  padding: 10px;
 }
