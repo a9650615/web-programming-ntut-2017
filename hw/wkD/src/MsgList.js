@@ -46,8 +46,8 @@ export default class MsgList extends Component {
         msgs[key].user = users[msgs[key]];
       } else {
         firebase.database().ref('users/'+msgs[key].user).once('value').then((data) => {
-          users[msgs[key].user] = data.val()
           // msgs[key].user = data.val()
+          users[msgs[key].user] = data.val()
           this.setState({users: users})
         })
       }
