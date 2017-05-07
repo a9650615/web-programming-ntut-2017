@@ -79,7 +79,7 @@ export default class MsgList extends Component {
                       <span className="user-name">{(users[msgs[key].user])?users[msgs[key].user].name: ''}</span>
                       {
                         (users[msgs[key].user] && !users[msgs[key].user].photo) &&
-                        <Avatar size={50}>
+                        <Avatar size={30}>
                           <span>{(users[msgs[key].user])?users[msgs[key].user].name.substring(0, 1).toUpperCase():'?'}</span>
                         </Avatar>
                       }
